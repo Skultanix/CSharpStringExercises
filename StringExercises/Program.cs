@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics.Tracing;
+using System.Linq.Expressions;
 
 namespace StringExercises
 {
@@ -51,29 +52,29 @@ namespace StringExercises
                 Console.WriteLine("Please write a series of numbers separated by hyphens (-).");
                 var input = Console.ReadLine();
 
-                if(string.IsNullOrWhiteSpace(input))
+                if (string.IsNullOrWhiteSpace(input))
                 {
                     return;
                 }
                 var numList = new List<int>();
-                foreach(var number in input.Split("-"))
+                foreach (var number in input.Split("-"))
                 {
                     numList.Add(int.Parse(number));
                 }
                 var hasDuplicates = false;
                 var isUnique = new List<int>();
-                for(var i = 0; i < numList.Count; i++)
+                for (var i = 0; i < numList.Count; i++)
                 {
                     if (isUnique.Contains(numList[i]))
                     {
                         hasDuplicates = true;
-                    } 
+                    }
                     else
                     {
                         isUnique.Add(numList[i]);
                     }
                 }
-                if(hasDuplicates == true)
+                if (hasDuplicates == true)
                 {
                     Console.WriteLine("Duplicates present.");
                 }
@@ -87,23 +88,23 @@ namespace StringExercises
             {
                 Console.WriteLine("Please enter a valid time in 24-hr format.");
                 var input = Console.ReadLine();
-                if(string.IsNullOrWhiteSpace(input))
+                if (string.IsNullOrWhiteSpace(input))
                 {
                     Console.WriteLine("Invalid time provided.");
                     return;
                 }
                 var hourAndMinutes = input.Split(":");
-                if(hourAndMinutes.Length != 2)
+                if (hourAndMinutes.Length != 2)
                 {
                     Console.WriteLine("Invalid time provided.");
                     return;
                 }
                 var hour = int.Parse(hourAndMinutes[0]);
                 var minute = int.Parse(hourAndMinutes[1]);
-                if((hour >= 0) && (hour <= 23) && (minute >= 0) && (minute <= 59))
+                if ((hour >= 0) && (hour <= 23) && (minute >= 0) && (minute <= 59))
                 {
                     Console.WriteLine("Valid time provided");
-                }    
+                }
                 else
                 {
                     Console.WriteLine("Invalid time provided.");
@@ -113,14 +114,14 @@ namespace StringExercises
             {
                 Console.WriteLine("Say the first few words on your mind and they will be converted to pascal case (PascalCase).");
                 var input = Console.ReadLine();
-             
-                if(string.IsNullOrWhiteSpace(input))
+
+                if (string.IsNullOrWhiteSpace(input))
                 {
                     Console.WriteLine("Error.");
                     return;
                 }
                 var pascalizedInput = "";
-                foreach(var word in input.Split(" "))
+                foreach (var word in input.Split(" "))
                 {
                     var pascalizedWord = char.ToUpper(word[0]) + word.ToLower().Substring(1);
                     pascalizedInput += pascalizedWord;
@@ -139,55 +140,57 @@ namespace StringExercises
                 var vowels = new List<char>();
                 var standardizedInput = input.ToLower();
                 var characters = standardizedInput.ToCharArray();
-               for(int i = 0; i < characters.Length; i++)
+                for (int i = 0; i < characters.Length; i++)
                 {
-                   if(characters[i] == 'a' || characters[i] == 'e' || characters[i] == 'i' || characters[i] == 'o' || characters[i] == 'u' || characters[i] == 'y')
+                    if (characters[i] == 'a' || characters[i] == 'e' || characters[i] == 'i' || characters[i] == 'o' || characters[i] == 'u' || characters[i] == 'y')
                     {
                         vowels.Add(characters[i]);
                     }
                 }
                 Console.WriteLine(string.Format("The total number of vowels in '{0}' is {1} vowels.", input, vowels.Count()));
-                
-                
+
+
             }
             //Calling the 'Exercises'
 
             Console.WriteLine("Hello. Please enter in specific exercise number that you would like to test (one through five).");
             var input = Console.ReadLine();
-            if(string.IsNullOrWhiteSpace(input))
+            if (string.IsNullOrWhiteSpace(input))
             {
                 Console.WriteLine("Error.");
                 return;
             }
-            if(input.ToLower() == "one" || int.Parse(input) == 1)
+            try
             {
-                Console.WriteLine("Exercise one selected.");
-                ExerciseOne();
-            } 
-            else if(input.ToLower() == "two" || int.Parse(input) == 2)
-            {
-                Console.WriteLine("Exercise two selected.");
-                ExerciseTwo();
+                if (input.ToLower() == "one" || int.Parse(input) == 1)
+                {
+                    Console.WriteLine("Exercise one selected.");
+                    ExerciseOne();
+                }
+                else if (input.ToLower() == "two" || int.Parse(input) == 2)
+                {
+                    Console.WriteLine("Exercise two selected.");
+                    ExerciseTwo();
+                }
+                else if (input.ToLower() == "three" || int.Parse(input) == 3)
+                {
+                    Console.WriteLine("Exercise three selected.");
+                    ExerciseThree();
+                }
+                else if (input.ToLower() == "four" || int.Parse(input) == 4)
+                {
+                    Console.WriteLine("Exercise four selected.");
+                    ExerciseFour();
+                }
+                else if (input.ToLower() == "five" || int.Parse(input) == 5)
+                {
+                    Console.WriteLine("Exercise five selected.");
+                    ExerciseFive();
+                }
             }
-            else if(input.ToLower() == "three" || int.Parse(input) == 3)
-            {
-                Console.WriteLine("Exercise three selected.");
-                ExerciseThree();
-            }
-            else if(input.ToLower() == "four" || int.Parse(input) == 4)
-            {
-                Console.WriteLine("Exercise four selected.");
-                ExerciseFour();
-            }
-            else if(input.ToLower() == "five" || int.Parse(input) == 5)
-            {
-                Console.WriteLine("Exercise five selected.");
-                ExerciseFive();
-            }
-            else
+            catch
             {
                 Console.WriteLine("Error.");
-                return;
             }
         }
     }
