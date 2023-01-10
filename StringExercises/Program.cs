@@ -127,11 +127,35 @@ namespace StringExercises
                 }
                 Console.WriteLine(pascalizedInput);
             }
+            static void ExerciseFive()
+            {
+                Console.WriteLine("Please enter a word.");
+                var input = Console.ReadLine();
+                if (string.IsNullOrWhiteSpace(input))
+                {
+                    Console.WriteLine("Error.");
+                    return;
+                }
+                var vowels = new List<char>();
+                var standardizedInput = input.ToLower();
+                var characters = standardizedInput.ToCharArray();
+               for(int i = 0; i < characters.Length; i++)
+                {
+                   if(characters[i] == 'a' || characters[i] == 'e' || characters[i] == 'i' || characters[i] == 'o' || characters[i] == 'u' || characters[i] == 'y')
+                    {
+                        vowels.Add(characters[i]);
+                    }
+                }
+                Console.WriteLine(string.Format("The total number of vowels in '{0}' is {1} vowels.", input, vowels.Count()));
+                
+                
+            }
             //Calling the 'Exercise Classes'
             //ExerciseOne();
             //ExerciseTwo();
             //ExerciseThree();
-            ExerciseFour();
+            //ExerciseFour();
+            ExerciseFive();
         }
     }
 }
