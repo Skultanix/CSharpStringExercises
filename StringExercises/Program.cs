@@ -150,12 +150,45 @@ namespace StringExercises
                 
                 
             }
-            //Calling the 'Exercise Classes'
-            //ExerciseOne();
-            //ExerciseTwo();
-            //ExerciseThree();
-            //ExerciseFour();
-            ExerciseFive();
+            //Calling the 'Exercises'
+
+            Console.WriteLine("Hello. Please enter in specific exercise number that you would like to test (one through five).");
+            var input = Console.ReadLine();
+            if(string.IsNullOrWhiteSpace(input))
+            {
+                Console.WriteLine("Error.");
+                return;
+            }
+            if(input.ToLower() == "one" || int.Parse(input) == 1)
+            {
+                Console.WriteLine("Exercise one selected.");
+                ExerciseOne();
+            } 
+            else if(input.ToLower() == "two" || int.Parse(input) == 2)
+            {
+                Console.WriteLine("Exercise two selected.");
+                ExerciseTwo();
+            }
+            else if(input.ToLower() == "three" || int.Parse(input) == 3)
+            {
+                Console.WriteLine("Exercise three selected.");
+                ExerciseThree();
+            }
+            else if(input.ToLower() == "four" || int.Parse(input) == 4)
+            {
+                Console.WriteLine("Exercise four selected.");
+                ExerciseFour();
+            }
+            else if(input.ToLower() == "five" || int.Parse(input) == 5)
+            {
+                Console.WriteLine("Exercise five selected.");
+                ExerciseFive();
+            }
+            else
+            {
+                Console.WriteLine("Error.");
+                return;
+            }
         }
     }
 }
