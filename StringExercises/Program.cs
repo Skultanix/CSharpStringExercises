@@ -44,7 +44,46 @@
                     Console.WriteLine("Numbers are not consecutive");
                 }
             }
-            ExerciseOne();
+            static void ExerciseTwo()
+            {
+                Console.WriteLine("Please write a series of numbers separated by hyphens (-).");
+                var input = Console.ReadLine();
+
+                if(string.IsNullOrWhiteSpace(input))
+                {
+                    return;
+                }
+                var numList = new List<int>();
+                foreach(var number in input.Split("-"))
+                {
+                    numList.Add(int.Parse(number));
+                }
+                var hasDuplicates = false;
+                var isUnique = new List<int>();
+                for(var i = 0; i < numList.Count; i++)
+                {
+                    if (isUnique.Contains(numList[i]))
+                    {
+                        hasDuplicates = true;
+                    } 
+                    else
+                    {
+                        isUnique.Add(numList[i]);
+                    }
+                }
+                if(hasDuplicates == true)
+                {
+                    Console.WriteLine("Duplicates present.");
+                }
+                else
+                {
+                    Console.WriteLine("No duplicates present.");
+                }
+
+            }
+            //Calling the 'Exercise Classes'
+            //ExerciseOne();
+            ExerciseTwo();
         }  
     }
 }
