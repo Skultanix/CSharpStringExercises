@@ -1,4 +1,6 @@
-﻿namespace StringExercises
+﻿using System.Diagnostics.Tracing;
+
+namespace StringExercises
 {
     internal class Program
     {
@@ -107,10 +109,29 @@
                     Console.WriteLine("Invalid time provided.");
                 }
             }
+            static void ExerciseFour()
+            {
+                Console.WriteLine("Say the first few words on your mind and they will be converted to pascal case (PascalCase).");
+                var input = Console.ReadLine();
+             
+                if(string.IsNullOrWhiteSpace(input))
+                {
+                    Console.WriteLine("Error.");
+                    return;
+                }
+                var pascalizedInput = "";
+                foreach(var word in input.Split(" "))
+                {
+                    var pascalizedWord = char.ToUpper(word[0]) + word.ToLower().Substring(1);
+                    pascalizedInput += pascalizedWord;
+                }
+                Console.WriteLine(pascalizedInput);
+            }
             //Calling the 'Exercise Classes'
             //ExerciseOne();
             //ExerciseTwo();
-            ExerciseThree();
+            //ExerciseThree();
+            ExerciseFour();
         }
     }
 }
