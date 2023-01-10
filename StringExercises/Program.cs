@@ -81,9 +81,36 @@
                 }
 
             }
+            static void ExerciseThree()
+            {
+                Console.WriteLine("Please enter a valid time in 24-hr format.");
+                var input = Console.ReadLine();
+                if(string.IsNullOrWhiteSpace(input))
+                {
+                    Console.WriteLine("Invalid time provided.");
+                    return;
+                }
+                var hourAndMinutes = input.Split(":");
+                if(hourAndMinutes.Length != 2)
+                {
+                    Console.WriteLine("Invalid time provided.");
+                    return;
+                }
+                var hour = int.Parse(hourAndMinutes[0]);
+                var minute = int.Parse(hourAndMinutes[1]);
+                if((hour >= 0) && (hour <= 23) && (minute >= 0) && (minute <= 59))
+                {
+                    Console.WriteLine("Valid time provided");
+                }    
+                else
+                {
+                    Console.WriteLine("Invalid time provided.");
+                }
+            }
             //Calling the 'Exercise Classes'
             //ExerciseOne();
-            ExerciseTwo();
-        }  
+            //ExerciseTwo();
+            ExerciseThree();
+        }
     }
 }
